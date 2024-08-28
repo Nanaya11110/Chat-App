@@ -14,14 +14,13 @@ Route::controller(HomeController::class)->group(function()
     Route::get('/','index')->name('Home')->Middleware(LoginMiddleware::class);
 });
 
-Route::get('/Chat',function(){
-    broadcast(new SendMessage(User::find(auth()->user()->id)));
-});
 Route::controller(LoginController::class)->group(function()
 {
     Route::get('/Login','show')->name('Login');
     Route::post('/authenticate', 'authenticate')->name('Auth');
     Route::post('/logout','logout')->name('Logout');
+    Route::get('/SignUp','SignUp')->name('SignUp');
+    Route::post('/SignUpStore','SignUpStore')->name('SignUpStore');
 });
 
 Route::get('/Setting',Home::class)->name('Setting');

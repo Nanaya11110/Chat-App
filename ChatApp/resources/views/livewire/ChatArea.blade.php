@@ -14,7 +14,7 @@
 
            </div>
            <div class="flex-1 px-2">
-               <div class="inline-block bg-gray-300 rounded-lg p-2 px-6 text-gray-700 max-w-60 max-h-52 break-words">
+               <div class="inline-block bg-gray-300 rounded-lg p-2 px-6 text-gray-700 max-w-40 max-h-52 break-words">
                    <span>{{ $mess->content }}</span>
                </div>
                <div class="pl-4"><small
@@ -27,7 +27,7 @@
            <div class="flex-1 px-2">
                <span wire:click="Delete({{ $mess->id }})"><i class="Delete fa-solid fa-x cursor-pointer"
                        style="color: #FF0000;"></i></span>
-               <div class="inline-block bg-blue-600 rounded-lg p-2 px-6 text-white max-w-60 max-h-52 break-words">
+               <div class="inline-block bg-blue-600 rounded-lg p-2 px-6 text-white max-w-44 overflow-x-auto overflow-y-auto overflow-hidden max-h-52 break-words">
                    <span>{{ $mess->content }}</span>
                </div>
 

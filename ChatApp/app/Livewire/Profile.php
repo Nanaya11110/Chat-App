@@ -13,13 +13,14 @@ class Profile extends Component
 
     use WithFileUploads;
 
-
-    #[Validate('min:3|email')]
+	
+#[Validate('required|min:3')] 
     public $gmail;
 
-    #[Validate('required|min:3')]
+	#[Validate('required|min:3')]
     public $password;
-    #[Validate('image')]
+    
+  #[Validate('image')]	
     public $image;
     public function update()
     {
@@ -30,6 +31,7 @@ class Profile extends Component
         $user->note = $this->password;
         if($this->image)
         {
+		//dd($this->image);
             $validator['image'] = $this->image->store('upload','public');
             $user->avatar_url = 'storage/'.$validator['image'];
         };

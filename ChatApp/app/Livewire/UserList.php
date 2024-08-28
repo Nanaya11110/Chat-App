@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\conversation;
 use App\Models\User;
 use Livewire\Component;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserList extends Component
 {

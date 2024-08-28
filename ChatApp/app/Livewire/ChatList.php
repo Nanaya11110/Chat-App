@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\conversation;
 use App\Models\User;
 use App\Models\messenge;
+use Illuminate\Support\Arr;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -44,16 +45,21 @@ class ChatList extends Component
         $authUser = User::find(auth()->user()->id);
         $list = conversation::where('chat_id',auth()->user()->id)->orwhere('user_id',auth()->user()->id)->get();
         for($i=0; $i < count($list); $i++)
-        {   $conversationsId[$i] = $list[$i]->id;
-            if ($list[$i]->user_id == auth()->user()->id) $user[$i] = User::where('id','=',$list[$i]->chat_id)->first();
+        {   
+            $conversationsId[$i] = $list[$i]->id;
+            if ($list[$i]->user_id == auth()->user()->id) 
+                 $user[$i] = User::where('id','=',$list[$i]->chat_id)->first();
             else $user[$i] = User::where('id','=',$list[$i]->user_id)->first();
             $user[$i]['conversationsId'] =$conversationsId[$i];
-            $user[$i]['latestMessenge'] = $this->conversationLatestMessenge = conversation::find($i+1)?->latesMessenge?->content;
-            $user[$i]['latestMessengeTimes'] = $this->conversationLatestMessenge = conversation::find($i+1)?->latesMessenge?->created_at->diffForHumans();
+            $user[$i]['latestMessenge'] = $this->conversationLatestMessenge = conversation::find($list[$i]?->id)?->latesMessenge?->content;
+            $user[$i]['latestMessengeTimes'] = $this->conversationLatestMessenge = conversation::find($list[$i]?->id)?->latesMessenge?->created_at->diffForHumans();
             //dd($this->conversationLatestMessenge);
+          
         }
-      // dd($user);
-      $this->user = $user;
+
+        if(isset($user) == false) $user = ' ';
+        //dd($user);
+        $this->user = $user;
         if (isset($user))
         {
             return view('livewire.ChatList');

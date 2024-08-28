@@ -3,6 +3,9 @@
 @if(session('error'))
     <p class="bg-green-500">{{ session('error') }}</p>
 @endif
+@if(session('Sucess'))
+    <p class="bg-green-500">{{ session('Sucess') }}</p>
+@endif
 <body class="bg-gray-100">
     <div class="min-h-screen flex items-center justify-center">
         <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
@@ -31,7 +34,7 @@
                     in</button>
             </form>
             <div class="text-center">
-                <p class="text-sm">Don't have account? <a href="#" class=" bg-lime-600">Sign up here</a></p>
+                <p class="text-sm">Don't have account? <a href="{{route('SignUp')}}" class="">Sign up here</a></p>
             </div>
         </div>
     </div>

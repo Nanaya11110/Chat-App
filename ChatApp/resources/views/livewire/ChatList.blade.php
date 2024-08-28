@@ -2,6 +2,9 @@
     
     <div class="flex-1 h-full overflow-auto px-2">
         @if(isset($user))
+        @if ($user == ' ')
+            <p>No one</p>
+        @else
         @foreach ($user as $user)
         <div wire:click="conversations({{$user->id}},'{{$user['conversationsId']}}')" wire:key="{{ $user->id }}"
             class="entry cursor-pointer transform @if ($pick == $user->id) bg-green-500  @endif hover:scale-105 duration-150  transition-all bg-white mb-4 rounded p-4 flex shadow-md">
@@ -23,11 +26,12 @@
             </div>
         </div>
         @endforeach
+        @endif
+       
         @else
         <p>NO ONE</p>
         @endif
     </div>
-    <p class="bg-red-500">{{$pick}}</p>
 </div>
 
 

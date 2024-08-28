@@ -1,6 +1,8 @@
 @include('Layout.Header')
+@include('sweetalert::alert')
 
 <body>
+
     <div class="w-full h-screen bg-blue-950">
         <div class="flex h-full">
             @livewire('SideBar')
@@ -49,6 +51,4 @@
             console.log('SIDEBAR GONE');
         };
     });
-</script>
-<script>
 </script>
